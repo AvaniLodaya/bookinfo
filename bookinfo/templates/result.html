@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Result {% endblock %}
+{% block bodycontent %}
+    <h3> {{ result.title }} </h3>    
+    <table border="1">
+        <tr>
+            <td> Author(s)</td>
+            <td> {% for a in result.authors %} 
+                <li> {{ a }} </li> 
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td> Average Rating </td>
+            <td> {{ result.averageRating }} </td>
+        </tr>
+    </table>
+        
+   </form>
+{% endblock %}
