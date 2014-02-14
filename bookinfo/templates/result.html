@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block title %} Result {% endblock %}
 {% block bodycontent %}
+    <form action ="/search/" method="POST">
+    {% csrf_token %}
+    <table>
+            
+     
     <h3> {{ result.title }} </h3>    
-    <form action = '/search/' method = 'POST'>
+    
     <table border="1">
         <tr>
             <td> Author(s)</td>
@@ -16,6 +21,5 @@
             <td> {{ result.averageRating }} </td>
         </tr>
    </table>
-   <input type = 'submit' value = 'Search another book'>
-   </form>
+        </form>
 {% endblock %}

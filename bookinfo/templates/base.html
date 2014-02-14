@@ -4,7 +4,13 @@
             {% block title %} {% endblock %}
         </title>
     </head>
-    <body style="background-color: #00FFFF;;">
+    <body>
+	<div style="color:#00FFFF;;">
+	<form action = '/search/' method = 'POST'>
+	{% csrf_token %}
+	<input type = 'submit' value = 'Search Page !'>
+	</form>
+	</div>
         {% block bodycontent %} {% endblock %}
     </body>
 </html>
