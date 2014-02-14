@@ -2,6 +2,7 @@
 {% block title %} Result {% endblock %}
 {% block bodycontent %}
     <h3> {{ result.title }} </h3>    
+    <form action = '/search/' method = 'POST'>
     <table border="1">
         <tr>
             <td> Author(s)</td>
@@ -14,7 +15,7 @@
             <td> Average Rating </td>
             <td> {{ result.averageRating }} </td>
         </tr>
-    </table>
-        
+   </table>
+   <input type = 'submit' value = 'Search another book'>
    </form>
 {% endblock %}
