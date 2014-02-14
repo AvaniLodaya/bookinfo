@@ -2,7 +2,8 @@
 import os.path
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+#from debug_toolbar.toolbar.loader import DebugToolbar
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -20,6 +21,13 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
+CACHES = {
+	'default' : {
+		'BACKEND' : 'django.core.cache.backends.memcached.MemcachedCache',
+		'LOCATION' : '127.0.0.1:11211',
+	}
+}	
+ 
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -100,6 +108,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'bookinfo.urls'
@@ -122,12 +131,28 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'book',
+#    'debug_toolbar',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+#
+#DEBUG_TOOLBAR_PANELS = (
+#        'debug_toolbar.panels.version.VersionDebugPanel',
+#        'debug_toolbar.panels.timer.TimerDebugPanel',
+#        'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+#        'debug_toolbar.panels.headers.HeaderDebugPanel',
+        #'debug_toolbar.panels.profiling.ProfilingDebugPanel',
+#        'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+#        'debug_toolbar.panels.sql.SQLDebugPanel',
+#        'debug_toolbar.panels.template.TemplateDebugPanel',
+#        'debug_toolbar.panels.cache.CacheDebugPanel',
+#        'debug_toolbar.panels.signals.SignalDebugPanel',
+#        'debug_toolbar.panels.logger.LoggingPanel',
+#)
 
+#INTERNAL_IPS = ('174.121.34.187',)
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
